@@ -110,3 +110,19 @@ jobs:
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/product-api:latest
             ${{ secrets.DOCKERHUB_USERNAME }}/product-api:${{ github.sha }}
+  deploy-local:
+    needs: docker-publish
+    runs-on: [self-hosted, Windows, X64]
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Pull latest image from Docker Hub
+        run: docker compose -f docker-compose-prod.yaml pull
+
+      - name: Restart local production containers
+        run: docker compose -f docker-compose-prod.yaml up -d
+
+      - name: Check local containers
+        run: docker compose -f docker-compose-prod.yaml ps
