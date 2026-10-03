@@ -84,7 +84,7 @@ jobs:
         run: cat server.log || true
 
 
-          docker-publish:
+  docker-publish:
     needs: test-prod
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
