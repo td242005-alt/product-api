@@ -9,12 +9,13 @@ async function api(method, path) {
 }
 
 test("Product API CI tests", async (t) => {
-
     await t.test("GET product not found", async () => {
         const response = await api("GET", "/api/products/999999");
-
         assert.strictEqual(response.status, 404);
     });
 
+    await t.test("GET product 888888 not found", async () => {
+        const response = await api("GET", "/api/products/888888");
+        assert.strictEqual(response.status, 404);
+    });
 });
-// Update CI test for demonstration
