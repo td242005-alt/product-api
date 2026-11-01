@@ -26,8 +26,8 @@ test("Product API - Cau 8 CI/CD", async (t) => {
         assert.equal(res.status, 404);
     });
 
-    await t.test("GET san pham khong ton tai 333333", async () => {
-        const res = await api("GET", "/api/products/333333");
+    await t.test("GET san pham khong ton tai 444444", async () => {
+        const res = await api("GET", "/api/products/444444");
         assert.equal(res.status, 404);
     });
 
