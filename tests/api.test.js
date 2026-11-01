@@ -1,5 +1,4 @@
 
-
 const test = require("node:test");
 const assert = require("node:assert/strict");
 
@@ -26,4 +25,5 @@ test("Product API - Cau 8 CI/CD", async (t) => {
         assert.strictEqual((await api("GET", "/api/products/777777")).status, 404));
 
 });
-//docker exec nammongodb mongosh productdb --eval "db.products.find().toArray()"
+
+// cau 6 docker exec nammongodb mongosh productdb --eval "db.products.find().toArray()"
